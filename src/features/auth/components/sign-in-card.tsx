@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import React from "react"
+import React, { useState } from "react"
 import { FcGoogle } from "react-icons/fc"
 import { SignInFlow } from "../types"
 
@@ -11,6 +11,9 @@ interface SignInCardProps {
 }
 
 export const SignInCard = ({ setState }: SignInCardProps) => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
   return (
     <Card className="w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
@@ -21,8 +24,8 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
         <form className="space-y-2.5">
           <Input
             disabled={false}
-            value=""
-            onChange={() => {}}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             placeholder="E-Mail"
             type="email"
             required
@@ -30,8 +33,8 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
           />
           <Input
             disabled={false}
-            value=""
-            onChange={() => {}}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
             placeholder="Passwort"
             type="password"
             required
